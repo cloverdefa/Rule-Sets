@@ -1,9 +1,9 @@
 # NAME: Cloudflare
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets
-# DOMAIN: 5
+# DOMAIN: 4
 # DOMAIN-SUFFIX: 3
-# TOTAL: 8
+# TOTAL: 7
 
 DOMAIN,imap.gmail.com
 DOMAIN,www06.eyny.com
