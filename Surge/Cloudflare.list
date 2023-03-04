@@ -1,0 +1,15 @@
+# NAME: Cloudflare
+# AUTHOR: DAST
+# REPO: https://github.com/cloverdefa/Rule-Sets
+# DOMAIN: 5
+# DOMAIN-SUFFIX: 3
+# TOTAL: 8
+
+DOMAIN,imap.gmail.com
+DOMAIN,www.jkforum.net
+DOMAIN,www06.eyny.com
+DOMAIN,www.sex.com
+DOMAIN,www.mobile01.com
+DOMAIN-SUFFIX,mail.me.com
+DOMAIN-SUFFIX,dast.tw
+DOMAIN-SUFFIX,cloudflare.com

@@ -1,0 +1,15 @@
+# NAME: Direct
+# AUTHOR: DAST
+# REPO: https://github.com/cloverdefa/Rule-Sets
+# DOMAIN: 7
+# DOMAIN-SUFFIX: 1
+# TOTAL: 8
+
+DOMAIN,tuic1.dast.tw
+DOMAIN,tuic2.dast.tw
+DOMAIN,www.dast.tw
+DOMAIN,www.dast.tw
+DOMAIN,cn.pornhub.com
+DOMAIN,e-hentai.org
+DOMAIN,exhentai.org
+DOMAIN-SUFFIX,gandi.net
