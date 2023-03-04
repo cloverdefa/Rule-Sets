@@ -1,9 +1,9 @@
 # NAME: Direct
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets
-# DOMAIN: 6
+# DOMAIN: 7
 # DOMAIN-SUFFIX: 1
-# TOTAL: 7
+# TOTAL: 8
 
 DOMAIN,tuic1.dast.tw
 DOMAIN,tuic2.dast.tw
