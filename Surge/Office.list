@@ -1,0 +1,13 @@
+# NAME: Office
+# AUTHOR: DAST
+# REPO: https://github.com/cloverdefa/Rule-Sets
+# DOMAIN: 0
+# DOMAIN-KEYWORD: 0
+# DOMAIN-SUFFIX: 1
+# IP-CIDR: 1
+# PROCESS-NAME: 0
+# USER-AGENT: 0
+# TOTAL: 2
+
+DOMAIN-SUFFIX local
+IP-CIDR 10.0.5.0/24
