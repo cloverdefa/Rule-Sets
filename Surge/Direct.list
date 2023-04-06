@@ -1,16 +1,17 @@
 # NAME: Direct
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets
-# DOMAIN: 7
+# DOMAIN: 8
 # DOMAIN-KEYWORD: 0
 # DOMAIN-SUFFIX: 1
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 8
+# TOTAL: 9
 
 DOMAIN,tuic1.dast.tw
 DOMAIN,tuic2.dast.tw
+DOMAIN,dast.tw
 DOMAIN,www.dast.tw
 DOMAIN,www.jkforum.net
 DOMAIN,cn.pornhub.com
