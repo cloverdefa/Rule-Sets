@@ -1,6 +1,6 @@
 # NAME: Cloudflare WARP
 # AUTHOR: DAST
-# REPO: https://github.com/cloverdefa/Rule-Sets
+# REPO: https://github.com/cloverdefa/Rule-Sets/WARP.list
 # DOMAIN: 4
 # DOMAIN-SUFFIX: 2
 # DOMAIN-KEYWORD: 0
