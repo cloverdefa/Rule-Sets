@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.1.1...v0.2.0) (2023-05-28)
+
+
+### Features
+
+* add new rule to domain list and increase total number of rules ([1cedd09](https://github.com/cloverdefa/Rule-Sets/commit/1cedd090464370f0ac914a517dfe255f7b182d59))
+
+
+### Docs
+
+* update repository link in Direct.list file ([6673168](https://github.com/cloverdefa/Rule-Sets/commit/66731682d348202321f4b828b43b5801bdcff080))
+
 ## [0.1.1](https://github.com/cloverdefa/Rule-Sets/compare/v0.1.0...v0.1.1) (2023-05-10)
 
 
