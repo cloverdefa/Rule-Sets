@@ -2,12 +2,12 @@
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/WARP.list
 # DOMAIN: 5
-# DOMAIN-SUFFIX: 2
+# DOMAIN-SUFFIX: 3
 # DOMAIN-KEYWORD: 0
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 7
+# TOTAL: 8
 
 DOMAIN,imap.gmail.com
 DOMAIN,www06.eyny.com
@@ -16,3 +16,4 @@ DOMAIN,www.mobile01.com
 DOMAIN,dns.dast.tw
 DOMAIN-SUFFIX,mail.me.com
 DOMAIN-SUFFIX,dast.tw
+DOMAIN-SUFFIX,futa.gg
