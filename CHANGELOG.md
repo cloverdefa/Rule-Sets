@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.2.0...v0.3.0) (2023-06-15)
+
+
+### Features
+
+* update WARP.list file with domain changes ([10c6a73](https://github.com/cloverdefa/Rule-Sets/commit/10c6a73cafb5f2f4f9a8680e4037e8e8b90475ba))
+
 ## [0.2.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.1.1...v0.2.0) (2023-05-28)
 
 
