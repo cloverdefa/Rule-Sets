@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.3.0...v0.4.0) (2023-06-26)
+
+
+### Features
+
+* add and update domains in Direct and WARP lists ([a54f773](https://github.com/cloverdefa/Rule-Sets/commit/a54f773f07bc3192d052a826f82eff904bfe94ed))
+
 ## [0.3.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.2.0...v0.3.0) (2023-06-15)
 
 
