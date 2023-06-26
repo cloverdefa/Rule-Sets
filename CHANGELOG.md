@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.4.0...v0.5.0) (2023-06-26)
+
+
+### Features
+
+* improve functionality by adding domains to Direct.list ([15eb71d](https://github.com/cloverdefa/Rule-Sets/commit/15eb71db23051502c159a087468592834d705683))
+
 ## [0.4.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.3.0...v0.4.0) (2023-06-26)
 
 
