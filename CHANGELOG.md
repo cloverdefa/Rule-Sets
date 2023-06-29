@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.0...v0.5.1) (2023-06-29)
+
+
+### Code Refactoring
+
+* update values in Surge configuration files ([4e3309b](https://github.com/cloverdefa/Rule-Sets/commit/4e3309b7cdb1f26ffc110bf55b4039194ded880e))
+
 ## [0.5.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.4.0...v0.5.0) (2023-06-26)
 
 
