@@ -17,14 +17,14 @@ DOMAIN,www.jkforum.net
 DOMAIN,cn.pornhub.com
 DOMAIN,e-hentai.org
 DOMAIN,exhentai.org
+DOMAIN-SUFFIX,gandi.net
 DOMAIN,www.ctbcbank.com
+DOMAIN,gateway.fe.apple-dns.net
+DOMAIN,probe.me.apple-dns.net
 DOMAIN,gateway.icloud.com
 DOMAIN,watther-data.apple.com
 DOMAIN,amp-api-podcasts.apple.com
-DOMAIN,probe.me.apple-dns.net
 DOMAIN,kt-prod.ess.apple.com
-DOMAIN,gateway.fe.apple-dns.net
 DOMAIN-SUFFIX,ls.apple.com
 DOMAIN-SUFFIX,init.ess.apple.com
 DOMAIN-SUFFIX,itunes.apple.com
-DOMAIN-SUFFIX,gandi.net
