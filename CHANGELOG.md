@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.1...v0.5.2) (2023-06-30)
+
+
+### Code Refactoring
+
+* adjust count in Surge files ([5932d31](https://github.com/cloverdefa/Rule-Sets/commit/5932d316a33604dd4c95a4fd84c08c8f27243cf0))
+
 ## [0.5.1](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.0...v0.5.1) (2023-06-29)
 
 
