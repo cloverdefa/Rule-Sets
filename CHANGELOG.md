@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.2...v0.5.3) (2023-07-01)
+
+
+### Code Refactoring
+
+* adjust values and add/remove domain in Surge lists ([ce5a71b](https://github.com/cloverdefa/Rule-Sets/commit/ce5a71b02065adfdda119dcd50c2d58461c1c469))
+
 ## [0.5.2](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.1...v0.5.2) (2023-06-30)
 
 
