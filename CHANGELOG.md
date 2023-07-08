@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.4](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.3...v0.5.4) (2023-07-08)
+
+
+### Code Refactoring
+
+* update DOMAIN-SUFFIX values and add new entry for imap.gmail.com ([5a555b2](https://github.com/cloverdefa/Rule-Sets/commit/5a555b2383318be54e8df08c6ffbc8c0d84a44f0))
+
 ## [0.5.3](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.2...v0.5.3) (2023-07-01)
 
 
