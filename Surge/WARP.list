@@ -2,12 +2,12 @@
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/WARP.list
 # DOMAIN: 11
-# DOMAIN-SUFFIX: 2
+# DOMAIN-SUFFIX: 1
 # DOMAIN-KEYWORD: 0
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 13
+# TOTAL: 12
 
 DOMAIN,www06.eyny.com
 DOMAIN,www.sex.com
@@ -20,5 +20,4 @@ DOMAIN,pve.dast.tw
 DOMAIN,uptime.dast.tw
 DOMAIN,shadow.dast.tw
 DOMAIN,weifan-nas.dast.tw
-DOMAIN-SUFFIX,mail.me.com
 DOMAIN-SUFFIX,imap.gmail.com
