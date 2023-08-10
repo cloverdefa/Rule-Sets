@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.4...v0.6.0) (2023-08-10)
+
+
+### Features
+
+* refactor workflow triggers ([889d1ce](https://github.com/cloverdefa/Rule-Sets/commit/889d1ce360e1834dc322b4e8cb59a736fb8f47f5))
+
 ## [0.5.4](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.3...v0.5.4) (2023-07-08)
 
 
