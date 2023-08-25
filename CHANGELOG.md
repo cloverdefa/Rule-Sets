@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/cloverdefa/Rule-Sets/compare/v0.6.0...v0.6.1) (2023-08-25)
+
+
+### chore
+
+* update `changelog-types` configuration with new type `chore` ([acf25e5](https://github.com/cloverdefa/Rule-Sets/commit/acf25e5cc40880e3c9b53bbd178cc257c4144aef))
+
 ## [0.6.0](https://github.com/cloverdefa/Rule-Sets/compare/v0.5.4...v0.6.0) (2023-08-10)
 
 
