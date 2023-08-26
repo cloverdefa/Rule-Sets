@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.3](https://github.com/cloverdefa/Rule-Sets/compare/v0.6.2...v0.6.3) (2023-08-26)
+
+
+### chore
+
+* add .gitignore file to project ([1ba088d](https://github.com/cloverdefa/Rule-Sets/commit/1ba088d05a9c97cbca71d22b10ce90bb11b6e554))
+
 ## [0.6.2](https://github.com/cloverdefa/Rule-Sets/compare/v0.6.1...v0.6.2) (2023-08-26)
 
 
