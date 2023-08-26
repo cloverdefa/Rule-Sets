@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.2](https://github.com/cloverdefa/Rule-Sets/compare/v0.6.1...v0.6.2) (2023-08-26)
+
+
+### chore
+
+* ignore specific files and folders in `.gitignore` ([9d3917b](https://github.com/cloverdefa/Rule-Sets/commit/9d3917b8e36ee66cb8d95e5083483fffb801b68e))
+
 ## [0.6.1](https://github.com/cloverdefa/Rule-Sets/compare/v0.6.0...v0.6.1) (2023-08-25)
 
 
