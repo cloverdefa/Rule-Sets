@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.4](https://github.com/cloverdefa/Rule-Sets/compare/v0.6.3...v0.6.4) (2023-08-27)
+
+
+### chore
+
+* update gitignore patterns for workspace and build folders ([2cb0c3d](https://github.com/cloverdefa/Rule-Sets/commit/2cb0c3d7f8f6f31e4ed04f28381e96abc3002100))
+
 ## [0.6.3](https://github.com/cloverdefa/Rule-Sets/compare/v0.6.2...v0.6.3) (2023-08-26)
 
 
