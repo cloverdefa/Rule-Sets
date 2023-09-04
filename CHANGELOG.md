@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.5](https://github.com/cloverdefa/Rule-Sets/compare/v0.6.4...v0.6.5) (2023-09-04)
+
+
+### chore
+
+* ignore `pyproject.toml` and `poetry.lock` in the `.gitignore` file ([389374d](https://github.com/cloverdefa/Rule-Sets/commit/389374db3449f7a67a19389675be5ad28e7def76))
+
 ## [0.6.4](https://github.com/cloverdefa/Rule-Sets/compare/v0.6.3...v0.6.4) (2023-08-27)
 
 
