@@ -30,5 +30,3 @@ jobs:
            ${{ github.actor }} created commit: 
            Commit message: ${{ github.event.commits[0].message }}
            Repository: ${{ github.repository }}
-
-           https://github.com/${{ github.repository }}/commit/${{github.sha}}
