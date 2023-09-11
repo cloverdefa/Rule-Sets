@@ -1,0 +1,23 @@
+! Title: DAST URL Allowlist (AdGuard Home)
+! Updated: 2023-01-06T00:17:35
+! Expires: 1 day (update frequency)
+
+! DAST Sites
+@@||*.dast.tw^
+
+! E-Hentai
+@@||e-hentai.org^
+@@||exhentai.org^
+
+! Hentai Network
+@@||*.hath.network^
+
+! UI
+@@||*.ui.com^
+
+! Cloudflare
+@@||*.cloudflare.com^
+
+! Apple
+@@||*.apple.com^
+@@||gateway.icloud.com^
