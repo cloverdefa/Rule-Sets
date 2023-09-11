@@ -6,3 +6,4 @@
 ||telegram-ms.net^
 ||uh1sdf.top^
 ||telegramio.org^
+||902-telegarm.com^
