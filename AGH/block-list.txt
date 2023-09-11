@@ -1,5 +1,5 @@
 ! Title: DAST URL Blocklist (AdGuard Home)
-! Updated: 2023-05-03T00:15:10
+! Updated: 2023-09-11T22:23:10
 ! Expires: 1 day (update frequency)
 ||shufabu6000.com^
 ||telegraml.com^
