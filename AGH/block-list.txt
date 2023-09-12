@@ -1,9 +1,19 @@
 ! Title: DAST URL Blocklist (AdGuard Home)
-! Updated: 2023-09-11T22:23:10
-! Expires: 1 day (update frequency)
 ||shufabu6000.com^
 ||telegraml.com^
 ||telegram-ms.net^
 ||uh1sdf.top^
 ||telegramio.org^
 ||902-telegarm.com^
+
+! 聯合新聞網 UDN https://udn.com
+udn.com###ultraDesktopBanner
+udn.com##div[class="tools-box"]
+udn.com##section[class^="breaking-news__wrapper"]
+udn.com##aside
+udn.com##section[class="more-news article-section context-box"]
+udn.com##section[class="related-news more-news context-box article-section"]
+udn.com##section[class="facebook-comment article-section context-box"]
+udn.com##section[class="discuss-board article-section context-box"]
+udn.com#$#.wrapper-left { width: unset !important; }
+udn.com#$#.footer { margin-top: unset !important; }
