@@ -3,7 +3,14 @@
 ! Expires: 1 day (update frequency)
 
 ! DAST Sites
-@@||*.dast.tw^
+@@||dns.dast.tw^
+@@||nts.dast.tw^
+@@||unifi.dast.tw^
+@@||nas.dast.tw^
+@@||blog.dast.tw^
+@@||pve.dast.tw^
+@@||uptime.dast.tw^
+@@||shadow.dast.tw^
 
 ! E-Hentai
 @@||e-hentai.org^
