@@ -5,6 +5,7 @@
 ||uh1sdf.top^
 ||telegramio.org^
 ||902-telegarm.com^
+||telegram-yz.com^
 
 ! 中央社 CNA https://www.cna.com.tw
 ! 首頁右側、文章列表右側、內文中：訂閱提醒
