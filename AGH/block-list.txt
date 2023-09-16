@@ -62,3 +62,11 @@ news.ltn.com.tw##div[class=“footermenu”]
 3c.ltn.com.tw#$#.whitecon.borderline { border: unset !important;}
 3c.ltn.com.tw##.hero_gray
 
+ltn.com.tw#$#section.content940 { max-width: 100% !important; }
+ec.ltn.com.tw##div[id="right"]
+ec.ltn.com.tw##div[class="ltnheader boxTitle boxText"]
+ec.ltn.com.tw##div[id="marquee"]
+ec.ltn.com.tw##div[class="captionR"]
+ec.ltn.com.tw##ul[class="related boxTitle"]
+ec.ltn.com.tw##ul[class="todaynews"]
+ec.ltn.com.tw##div[class="top boxTitle"]
