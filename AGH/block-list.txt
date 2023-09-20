@@ -90,3 +90,25 @@ www.mirrormedia.mg#$#div[class="story-wrapper"] { padding-top: unset !important;
 www.mirrormedia.mg##div[class="share-sidebox story__share-sidebox"]
 www.mirrormedia.mg##div[class="sns-wrapper"]
 www.mirrormedia.mg##div[class="story__list"]
+
+! ETTODAY
+ettoday.net##div[class="c2"]
+ettoday.net##div[class="nav_2"]
+ettoday.net##div[class="part_menu_5 clearfix"]
+ettoday.net##div[class="text_ticker_1"]
+ettoday.net##div[class="et_ad_group_1"]
+ettoday.net##div[class="menu_2"]
+ettoday.net#$#div[class="c1"] { width: unset !important; }
+ettoday.net##div[id="hot_area"]
+ettoday.net##div[class="video_frame"]
+ettoday.net##div[class$="hot-news"]
+ettoday.net##div[class^="block block_1"]
+ettoday.net##div[id="et_sticky_pc"]
+ettoday.net##div[id="manau\\al_links"]
+ettoday.net##div[class="et_social_3"]
+||www.ettoday.net/source/tools/videoLiveShoppingCart/index.php7
+ettoday.net##div[id="manual_links"]
+ettoday.net##div[class^="block_a"]
+ettoday.net##div[class="fb_fans"]
+ettoday.net##ui[class="clearfix"]
+ettoday.net##div[id="etnews_live_player"]
