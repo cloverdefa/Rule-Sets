@@ -1,4 +1,6 @@
 ! Title: DAST URL Blocklist (AdGuard Home)
+
+! 網路詐騙
 ||shufabu6000.com^
 ||telegraml.com^
 ||telegram-ms.net^
