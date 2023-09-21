@@ -114,3 +114,13 @@ ettoday.net##div[class^="block_a"]
 ettoday.net##div[class="fb_fans"]
 ettoday.net##ui[class="clearfix"]
 ettoday.net##div[id="etnews_live_player"]
+
+! 新頭殼
+newtalk.tw##div[id="right_column"]
+newtalk.tw##div[id="news_marquee"]
+newtalk.tw##button[title="留言"]
+newtalk.tw##div[class^="gray_box"]
+newtalk.tw##div[class="newsBanner"]
+newtalk.tw##div[title="選單"]
+newtalk.tw#$#div[id="left_column"] { width: unset !important; }
+newtalk.tw##div[class="group w3"]
