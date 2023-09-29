@@ -52,6 +52,7 @@ ltn.com.tw##p[class="appE1121"]
 ltn.com.tw##div[class="whitecon related boxTitle"]
 ltn.com.tw##div[class="whitecon todaynews boxTitle boxText"]
 ltn.com.tw##div[class="caption"]
+
 news.ltn.com.tw##div[id="marqueeContent"]
 news.ltn.com.tw##aside
 news.ltn.com.tw##div[id="marqueeHeader"]
@@ -196,7 +197,49 @@ cool3c.com##section[class="block readmore row"]
 cool3c.com##div[class="footers-group-custom"]
 ||www.cool3c.com/article/*/infinite^$jsonprune=\$.result
 
-! walkerland
-walkerland.com.tw##div[class="right-block"]
-walkerland.com.tw#$#div[class="left-block"] { max-width: unset !important; }
-walkerland.com.tw##a[rel^="noreferrer"]
+! 電腦王阿達
+kocpc.com.tw##.jeg_sticky_sidebar
+||www.kocpc.com.tw/wp-content/plugins/jnews-auto-load-post/assets/js/jquery.autoload.js
+www.kocpc.com.tw#$#div[class="jeg_main_content col-md-8"] { width: unset !important; }
+
+! nownews
+nownews.com##div[class="subSite"]
+nownews.com##button[id="getApp"]
+nownews.com##div[class="rightCol-container"]
+nownews.com##div[class="topic-container"]
+nownews.com##.hotnews-top
+nownews.com##div[class="related-item"]
+nownews.com##div[id="divRcNews"]
+nownews.com##div[class="fbBlk"]
+nownews.com#$#div[class="leftCol"] { width: calc(90% - 2em) !important }
+
+! technews 科技新報
+technews.tw##div[class="tipbar"]
+technews.tw##div[id="secondary"]
+technews.tw##div[class="googlenews_Content"]
+technews.tw##div[class="newsLetter_articleContent newsLetter_articleColumn"]
+technews.tw##nav[class="nav-single"]
+technews.tw##div[id="fbSEOComments"]
+technews.tw##a[id="scrolldown"]
+technews.tw##div[class="footer_frame"]
+||technews.tw/wp-admin/admin-ajax.php*
+
+! 商業週刊
+businessweekly.com.tw##div[class^="Single-right-part"]
+businessweekly.com.tw##section[class^="Post-section"]
+businessweekly.com.tw##section[class^="Promotion"]
+businessweekly.com.tw##div[class="promote_subscribe"]
+businessweekly.com.tw##div[class="cover_summary_story"]
+businessweekly.com.tw##section[class^="Single-related"]
+businessweekly.com.tw##section[class="d-xs-none d-md-block"]
+businessweekly.com.tw##section[class^="Single-section"]
+businessweekly.com.tw##button[data-label="訂閱"]
+businessweekly.com.tw##div[class^="Links"]
+businessweekly.com.tw##div[class^="Border"]
+businessweekly.com.tw##div img[class="Logo-white lazy"]
+businessweekly.com.tw##div[class^="Logos"]
+businessweekly.com.tw##section[class^="Single-sidebar"]
+businessweekly.com.tw##body .Google-special:not(#style_important)
+businessweekly.com.tw#$#.col-lg-8 { flex: unset !important; max-width: unset !important}
+businessweekly.com.tw#$#.col-md-7 { flex: unset !important; max-width: unset !important}
+||ibw.bwnet.com.tw/file/js/vendor/infinite-scroll.pkgd.min.js
