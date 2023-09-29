@@ -195,3 +195,8 @@ cool3c.com##section[class="block comment-area"]
 cool3c.com##section[class="block readmore row"]
 cool3c.com##div[class="footers-group-custom"]
 ||www.cool3c.com/article/*/infinite^$jsonprune=\$.result
+
+! walkerland
+walkerland.com.tw##div[class="right-block"]
+walkerland.com.tw#$#div[class="left-block"] { max-width: unset !important; }
+walkerland.com.tw##a[rel^="noreferrer"]
