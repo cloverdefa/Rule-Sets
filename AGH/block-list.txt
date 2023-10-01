@@ -257,3 +257,8 @@ worldjournal.com##div[class^="cate-list__container"]
 worldjournal.com##section[class$="facebook-comment"]
 worldjournal.com##section[class="footer-social"]
 worldjournal.com##div[class="tools-box"]
+
+! INSIDE https://www.inside.com.tw
+! 文末附加內容：業配文
+||inside.com.tw^*/article.js
+www.inside.com.tw##.infinite_article
