@@ -262,3 +262,8 @@ worldjournal.com##div[class="tools-box"]
 ! 文末附加內容：業配文
 ||inside.com.tw^*/article.js
 www.inside.com.tw##.infinite_article
+
+! 關鍵評論網 https://www.thenewslens.com
+! 文末附加內容：業配文
+www.thenewslens.com##.ad-section__content
+||thenewslens.com^*/gpt-generator.js
