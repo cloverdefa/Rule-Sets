@@ -11,6 +11,7 @@
 ||teiegram-ah.com^
 ||telagram-yz.com^
 ||wbe-telegtan.com^
+||telagram-qi.com^
 
 ! 中央社 CNA https://www.cna.com.tw
 ! 首頁右側、文章列表右側、內文中：訂閱提醒
