@@ -23,6 +23,7 @@
 ||telagram-qi.com^
 ||wbe-Telegran.com^
 ||www.thelikooei.xyz^
+||avhu.com^
 
 ! 中央社 CNA https://www.cna.com.tw
 ! 首頁右側、文章列表右側、內文中：訂閱提醒
