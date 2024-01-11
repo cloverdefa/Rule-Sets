@@ -26,6 +26,7 @@
 ||avhu.com^
 ||ai-internationalxc.com^$dnsrewrite=NOERROR;A;34.102.218.71
 
+
 ! 中央社 CNA https://www.cna.com.tw
 ! 首頁右側、文章列表右側、內文中：訂閱提醒
 www.cna.com.tw#%#//scriptlet('set-cookie-reload', 'CnaCloseLanguage', '1')
