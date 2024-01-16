@@ -9,8 +9,9 @@
 # USER-AGENT: 0
 # TOTAL: 14
 
-DOMAIN,tuic1.dast.tw
-DOMAIN,tuic2.dast.tw
+DOMAIN,h1.dast.tw
+DOMAIN,h2.dast.tw
+DOMAIN,h3.dast.tw
 DOMAIN,dns.dast.tw
 DOMAIN,dast.tw
 DOMAIN,www.dast.tw
