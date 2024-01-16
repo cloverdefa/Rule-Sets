@@ -11,6 +11,9 @@
 @@||pve.dast.tw^
 @@||uptime.dast.tw^
 @@||shadow.dast.tw^
+@@||h1.dast.tw^
+@@||h2.dast.tw^
+@@||h3.dast.tw^
 
 ! E-Hentai
 @@||e-hentai.org^
