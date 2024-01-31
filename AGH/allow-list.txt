@@ -25,6 +25,9 @@
 ! UI
 @@||*.ui.com^
 
+! Github
+@@||github.com^
+
 ! Cloudflare
 @@||*.cloudflare.com^
 
