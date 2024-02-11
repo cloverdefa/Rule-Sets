@@ -31,6 +31,9 @@
 ! Cloudflare
 @@||*.cloudflare.com^
 
+! ChatGPT
+@@||chat.openai.com^
+
 ! Apple
 @@||*.apple.com^
 @@||gateway.icloud.com^
