@@ -1,16 +1,18 @@
 # NAME: Cloudflare WARP
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/WARP.list
-# DOMAIN: 11
+# DOMAIN: 12
 # DOMAIN-SUFFIX: 1
 # DOMAIN-KEYWORD: 0
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 12
+# TOTAL: 13
 
 DOMAIN,www06.eyny.com
 DOMAIN,www.mobile01.com
+DOMAIN,ansible.dast.tw
+DOMAIN,docker.dast.tw
 DOMAIN,nts.dast.tw
 DOMAIN,unifi.dast.tw
 DOMAIN,nas.dast.tw
