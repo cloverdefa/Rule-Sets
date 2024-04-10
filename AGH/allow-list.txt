@@ -3,6 +3,8 @@
 ! Expires: 1 day (update frequency)
 
 ! DAST Sites
+@@||ansible.dast.tw^
+@@||docker.dast.tw^
 @@||dns.dast.tw^
 @@||nts.dast.tw^
 @@||unifi.dast.tw^
