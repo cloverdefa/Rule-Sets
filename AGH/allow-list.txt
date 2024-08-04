@@ -20,6 +20,7 @@
 ! E-Hentai
 @@||e-hentai.org^
 @@||exhentai.org^
+@@||*.hath.network^
 
 ! Hentai Network
 @@||*.hath.network^
