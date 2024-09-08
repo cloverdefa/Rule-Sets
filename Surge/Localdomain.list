@@ -11,5 +11,9 @@
 
 DOMAIN,uckh.localdomain
 DOMAIN,nas-dast.localdomain
+DOMAIN,pve.localdomain
+DOMAIN,agh.localdomain
 DOMAIN,homebridge.localdomain
+DOMAIN,office-router.localdomain
+DOMAIN,ucko.localdomain
 DOMAIN,nas2-dast.localdomain
