@@ -9,9 +9,7 @@
 # USER-AGENT: 0
 # TOTAL: 14
 
-DOMAIN,uckh.local
+DOMAIN,uckh.localdomain
 DOMAIN,nas-dast.localdomain
-DOMAIN,nas-dast.local
-DOMAIN,homebridge.local
+DOMAIN,homebridge.localdomain
 DOMAIN,nas2-dast.localdomain
-DOMAIN,nas2-dast.local
