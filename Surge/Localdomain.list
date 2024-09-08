@@ -1,0 +1,16 @@
+# NAME: Localdomain
+# AUTHOR: DAST
+# REPO: https://github.com/cloverdefa/Rule-Sets/Localdomain.list
+# DOMAIN: 13
+# DOMAIN-KEYWORD: 0
+# DOMAIN-SUFFIX: 1
+# IP-CIDR: 0
+# PROCESS-NAME: 0
+# USER-AGENT: 0
+# TOTAL: 14
+
+DOMAIN,uckh.local
+DOMAIN,nas-dast.localdomain
+DOMAIN,nas-dast.local
+DOMAIN,homebridge.local
+DOMAIN,nas2-dast.localdomain
