@@ -1,9 +1,9 @@
 # NAME: Localdomain
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/Localdomain.list
-# DOMAIN: 13
+# DOMAIN: 8
 # DOMAIN-KEYWORD: 0
-# DOMAIN-SUFFIX: 1
+# DOMAIN-SUFFIX: 0
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
