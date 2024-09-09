@@ -41,5 +41,3 @@
 @@||*.apple.com^
 @@||gateway.icloud.com^
 
-! Movies RARBG
-@@||trk.bestmoviesflix.xyz^
