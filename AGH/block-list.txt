@@ -8,7 +8,7 @@
 
 ! 針對香港的簡訊詐騙
 ||hongkongpost.cf^
-||www.telegrnn.xyz^
+||www.telegrarnn.xyz^
 
 ! 網路詐騙
 ||shufabu6000.com^
