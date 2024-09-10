@@ -2,12 +2,12 @@
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/WARP.list
 # DOMAIN: 13
-# DOMAIN-SUFFIX: 3
+# DOMAIN-SUFFIX: 4
 # DOMAIN-KEYWORD: 0
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 16
+# TOTAL: 17
 
 DOMAIN,www.mangacopy.com
 DOMAIN,www06.eyny.com
@@ -22,6 +22,7 @@ DOMAIN,pve.dast.tw
 DOMAIN,uptime.dast.tw
 DOMAIN,shadow.dast.tw
 DOMAIN,weifan-nas.dast.tw
+DOMAIN-SUFFIX,mangafuna.xyz
 DOMAIN-SUFFIX,ui.com
 DOMAIN-SUFFIX,ui.direct
 DOMAIN-SUFFIX,gmail.com
