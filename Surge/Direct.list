@@ -1,13 +1,13 @@
 # NAME: Direct
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/Direct.list
-# DOMAIN: 13
+# DOMAIN: 9
 # DOMAIN-KEYWORD: 0
 # DOMAIN-SUFFIX: 1
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 14
+# TOTAL: 10
 
 DOMAIN,h1.dast.tw
 DOMAIN,h2.dast.tw
