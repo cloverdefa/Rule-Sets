@@ -1,15 +1,14 @@
 # NAME: Cloudflare WARP
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/WARP.list
-# DOMAIN: 13
-# DOMAIN-SUFFIX: 4
+# DOMAIN: 12
+# DOMAIN-SUFFIX: 5
 # DOMAIN-KEYWORD: 0
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
 # TOTAL: 17
 
-DOMAIN,www.mangacopy.com
 DOMAIN,www06.eyny.com
 DOMAIN,www.mobile01.com
 DOMAIN,ansible.dast.tw
@@ -22,6 +21,7 @@ DOMAIN,pve.dast.tw
 DOMAIN,uptime.dast.tw
 DOMAIN,shadow.dast.tw
 DOMAIN,weifan-nas.dast.tw
+DOMAIN-SUFFIX,mangacopy.com
 DOMAIN-SUFFIX,mangafuna.xyz
 DOMAIN-SUFFIX,ui.com
 DOMAIN-SUFFIX,ui.direct
