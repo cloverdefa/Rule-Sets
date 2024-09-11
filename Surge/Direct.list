@@ -1,9 +1,9 @@
 # NAME: Direct
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/Direct.list
-# DOMAIN: 9
+# DOMAIN: 8
 # DOMAIN-KEYWORD: 0
-# DOMAIN-SUFFIX: 2
+# DOMAIN-SUFFIX: 3
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
@@ -17,7 +17,7 @@ DOMAIN,www.jkforum.net
 DOMAIN,cn.pornhub.com
 DOMAIN,e-hentai.org
 DOMAIN,exhentai.org
-DOMAIN,www.ctbcbank.com
+DOMAIN-SUFFIX,ctbcbank.com
 DOMAIN-SUFFIX,gandi.net
 DOMAIN-SUFFIX,icloud.com
 
