@@ -28,3 +28,7 @@
 ||wcw-iphone.com^
 ||w-vvhatsapp.com^
 ||signin.authen-connexion.info^
+
+! 阻擋TELEGRAM連線廣告推送
+||95.161.76.100/31
+
