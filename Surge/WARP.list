@@ -12,7 +12,6 @@
 DOMAIN,www06.eyny.com
 DOMAIN,www.mobile01.com
 DOMAIN,ansible.dast.tw
-DOMAIN,docker.dast.tw
 DOMAIN,nts.dast.tw
 DOMAIN,unifi.dast.tw
 DOMAIN,nas.dast.tw
@@ -21,6 +20,7 @@ DOMAIN,pve.dast.tw
 DOMAIN,uptime.dast.tw
 DOMAIN,shadow.dast.tw
 DOMAIN,weifan-nas.dast.tw
+DOMAIN,weifan-unvr.dast.tw
 DOMAIN-SUFFIX,mangacopy.com
 DOMAIN-SUFFIX,mangafuna.xyz
 DOMAIN-SUFFIX,ui.com

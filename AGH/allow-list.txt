@@ -4,7 +4,6 @@
 
 ! DAST Sites
 @@||ansible.dast.tw^
-@@||docker.dast.tw^
 @@||dns.dast.tw^
 @@||nts.dast.tw^
 @@||unifi.dast.tw^
@@ -13,6 +12,8 @@
 @@||pve.dast.tw^
 @@||uptime.dast.tw^
 @@||shadow.dast.tw^
+@@||weifan-nas.dast.tw^
+@@||weifan-unvr.dast.tw^
 @@||h1.dast.tw^
 @@||h2.dast.tw^
 @@||h3.dast.tw^
