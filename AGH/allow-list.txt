@@ -42,3 +42,6 @@
 @@||*.apple.com^
 @@||gateway.icloud.com^
 
+! Yiwen
+@@||*.hlh.org.tw^
+
