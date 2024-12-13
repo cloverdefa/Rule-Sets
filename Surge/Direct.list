@@ -3,11 +3,11 @@
 # REPO: https://github.com/cloverdefa/Rule-Sets/Direct.list
 # DOMAIN: 8
 # DOMAIN-KEYWORD: 0
-# DOMAIN-SUFFIX: 3
+# DOMAIN-SUFFIX: 2
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 11
+# TOTAL: 10
 
 DOMAIN,h1.dast.tw
 DOMAIN,h2.dast.tw
@@ -19,5 +19,4 @@ DOMAIN,e-hentai.org
 DOMAIN,exhentai.org
 DOMAIN-SUFFIX,ctbcbank.com
 DOMAIN-SUFFIX,gandi.net
-DOMAIN-SUFFIX,icloud.com
 
