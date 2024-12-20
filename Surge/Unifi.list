@@ -1,0 +1,20 @@
+# NAME: Unifi Devices
+# AUTHOR: DAST
+# REPO: https://github.com/cloverdefa/Rule-Sets/Unifi.list
+# DOMAIN: 8
+# DOMAIN-SUFFIX: 0
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 0
+# PROCESS-NAME: 0
+# USER-AGENT: 0
+# TOTAL: 8
+
+DOMAIN, cloudkey-home
+DOMAIN, uxg
+DOMAIN, switch-core
+DOMAIN, switch-weakcurrentbox
+DOMAIN, ap-weakcurrentbox
+DOMAIN, ap-livingroom
+DOMAIN, ap-workingroom
+DOMAIN, ap-bedroom
+
