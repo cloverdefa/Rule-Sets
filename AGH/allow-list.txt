@@ -6,7 +6,8 @@
 @@||ansible.dast.tw^
 @@||dns.dast.tw^
 @@||nts.dast.tw^
-@@||unifi.dast.tw^
+@@||unifi-home.dast.tw^
+@@||unifi-office.dast.tw^
 @@||nas.dast.tw^
 @@||blog.dast.tw^
 @@||pve.dast.tw^
