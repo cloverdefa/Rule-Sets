@@ -13,7 +13,8 @@ DOMAIN,www06.eyny.com
 DOMAIN,www.mobile01.com
 DOMAIN,ansible.dast.tw
 DOMAIN,nts.dast.tw
-DOMAIN,unifi.dast.tw
+DOMAIN,unifi-home.dast.tw
+DOMAIN,unifi-office.dast.tw
 DOMAIN,nas.dast.tw
 DOMAIN,blog.dast.tw
 DOMAIN,pve.dast.tw
