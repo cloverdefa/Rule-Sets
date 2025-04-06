@@ -7,7 +7,7 @@
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 10
+# TOTAL: 11
 
 DOMAIN,h1.dast.tw
 DOMAIN,h2.dast.tw
@@ -19,4 +19,5 @@ DOMAIN,e-hentai.org
 DOMAIN,exhentai.org
 DOMAIN-SUFFIX,ctbcbank.com
 DOMAIN-SUFFIX,gandi.net
+
 
