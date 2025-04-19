@@ -9,17 +9,17 @@
 # USER-AGENT: 0
 # TOTAL: 18
 
-DOMAIN,www06.eyny.com
-DOMAIN,www.mobile01.com
 DOMAIN,ansible.dast.tw
+DOMAIN,blog.dast.tw
+DOMAIN,nas.dast.tw
 DOMAIN,nts.dast.tw
+DOMAIN,pve.dast.tw
+DOMAIN,shadow.dast.tw
 DOMAIN,unifi-home.dast.tw
 DOMAIN,unifi-office.dast.tw
-DOMAIN,nas.dast.tw
-DOMAIN,blog.dast.tw
-DOMAIN,pve.dast.tw
 DOMAIN,uptime.dast.tw
-DOMAIN,shadow.dast.tw
+DOMAIN,www.mobile01.com
+DOMAIN,www06.eyny.com
 DOMAIN,weifan-nas.dast.tw
 DOMAIN,weifan-unvr.dast.tw
 DOMAIN-SUFFIX,mangacopy.com
