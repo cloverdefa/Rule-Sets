@@ -1,20 +1,21 @@
 # NAME: Localdomain
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/Localdomain.list
-# DOMAIN: 8
+# DOMAIN: 9
 # DOMAIN-KEYWORD: 0
 # DOMAIN-SUFFIX: 0
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 8
+# TOTAL: 9
 
-DOMAIN,uckh.localdomain
-DOMAIN,nas-dast.localdomain
-DOMAIN,pve.localdomain
 DOMAIN,agh.localdomain
+DOMAIN,dns.dast.tw
 DOMAIN,ha.localdomain
-DOMAIN,office-router.localdomain
-DOMAIN,ucko.localdomain
+DOMAIN,nas-dast.localdomain
 DOMAIN,nas2-dast.localdomain
+DOMAIN,office-router.localdomain
+DOMAIN,pve.localdomain
+DOMAIN,uckh.localdomain
+DOMAIN,ucko.localdomain
 
