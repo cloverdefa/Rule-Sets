@@ -1,18 +1,17 @@
 # NAME: Direct
 # AUTHOR: DAST
 # REPO: https://github.com/cloverdefa/Rule-Sets/Direct.list
-# DOMAIN: 9
+# DOMAIN: 8
 # DOMAIN-KEYWORD: 0
 # DOMAIN-SUFFIX: 2
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 11
+# TOTAL: 10
 
 DOMAIN,h1.dast.tw
 DOMAIN,h2.dast.tw
 DOMAIN,h3.dast.tw
-DOMAIN,dns.dast.tw
 DOMAIN,github.com
 DOMAIN,www.jkforum.net
 DOMAIN,cn.pornhub.com
