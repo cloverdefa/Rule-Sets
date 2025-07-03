@@ -19,27 +19,3 @@
 @@||h2.dast.tw^
 @@||h3.dast.tw^
 
-! E-Hentai
-@@||e-hentai.org^
-@@||exhentai.org^
-@@||*.hath.network^
-
-! Hentai Network
-@@||*.hath.network^
-
-! UI
-@@||*.ui.com^
-
-! Github
-@@||github.com^
-
-! Cloudflare
-@@||*.cloudflare.com^
-
-! ChatGPT
-@@||chat.openai.com^
-
-! Apple
-@@||*.apple.com^
-@@||gateway.icloud.com^
-
