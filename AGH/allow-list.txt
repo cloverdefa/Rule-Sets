@@ -1,6 +1,5 @@
 ! Title: DAST URL Allowlist (AdGuard Home)
-! Updated: 2023-01-06T00:17:35
-! Expires: 1 day (update frequency)
+! Updated: 2025-07-05T:10:15:35
 
 ! DAST Sites
 @@||ansible.dast.tw^
@@ -18,4 +17,15 @@
 @@||h1.dast.tw^
 @@||h2.dast.tw^
 @@||h3.dast.tw^
+
+! Microsoft Sites
+@@||login.microsoftonline.com^
+@@||*.login.microsoftonline.com^
+@@||login.live.com^
+@@||*.msauth.net^
+@@||*.aadcdn.msftauth.net^
+@@||*.aadcdn.msauthimages.net^
+@@||*.logincdn.msftauth.net^
+@@||*.aadcdn.microsoftonline-p.com^
+@@||*.microsoftonline-p.com^
 
