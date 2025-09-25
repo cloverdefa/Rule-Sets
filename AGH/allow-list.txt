@@ -28,5 +28,3 @@
 @@||*.logincdn.msftauth.net^
 @@||*.aadcdn.microsoftonline-p.com^
 @@||*.microsoftonline-p.com^
-
-@@||etahub.com^
