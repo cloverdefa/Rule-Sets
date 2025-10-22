@@ -12,10 +12,3 @@ URL-REGEX,^https://legy.line-apps.com*.*/tl/discover/api/v*.*/collage/searchEntr
 URL-REGEX,^https://legy.line-apps.com*.*/tl/api/v*.*/feed$,REJECT
 URL-REGEX,^https://legy.line-apps.com*.*/tl/api/v*.*/timeline/*.*,REJECT
 
-# Line Today
-URL-REGEX,^https://a\.line\.me/lgfp/lad/*.*,REJECT
-URL-REGEX,^https://today\.line\.me/api/user/*.*,REJECT
-URL-REGEX,^https://today\.line.me/webapi/interaction/*.*,REJECT
-URL-REGEX,^https://today.line.me/webapi/social-feed/*.*,REJECT
-URL-REGEX,^https://static.line-scdn.net/lineads/*.*,REJECT
-URL-REGEX,^https://today\.line\.me/webapi/logging/*.*,REJECT
