@@ -3,5 +3,10 @@
 # Updated: 2025-07-09
 # REPO: https://github.com/cloverdefa/Rule-Sets/Surge/Block.list
 # DOMAIN-SUFFIX: 0
+# URL-REGEX: 5
 
-
+URL-REGEX,^https://legy.line-apps.com/ext/videohub/*.*,REJECT
+URL-REGEX,^https://legy.line-apps.com*.*/tl/discover/api/v*.*/recommendTab/feeds$,REJECT
+URL-REGEX,^https://legy.line-apps.com*.*/tl/discover/api/v*.*/collage/searchEntry$,REJECT
+URL-REGEX,^https://legy.line-apps.com*.*/tl/api/v*.*/feed$,REJECT
+URL-REGEX,^https://legy.line-apps.com*.*/tl/api/v*.*/timeline/*.*,REJECT
