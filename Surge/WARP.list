@@ -1,14 +1,14 @@
 # NAME: Cloudflare WARP
 # AUTHOR: DAST
-# Updated: 2025-07-09
+# Updated: 2025-10-24
 # REPO: https://github.com/cloverdefa/Rule-Sets/WARP.list
 # DOMAIN: 11
-# DOMAIN-SUFFIX: 3
+# DOMAIN-SUFFIX: 4
 # DOMAIN-KEYWORD: 0
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 14
+# TOTAL: 15
 
 DOMAIN,ansible.dast.tw
 DOMAIN,blog.dast.tw
@@ -24,3 +24,4 @@ DOMAIN,weifan-unvr.dast.tw
 DOMAIN-SUFFIX,ui.com
 DOMAIN-SUFFIX,ui.direct
 DOMAIN-SUFFIX,gmail.com
+DOMAIN-SUFFIX,formulae.brew.sh
