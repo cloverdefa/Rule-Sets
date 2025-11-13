@@ -1,0 +1,18 @@
+# NAME: Localdomain
+# AUTHOR: DAST
+# Updated: 2025-11-13
+# REPO: https://github.com/cloverdefa/Rule-Sets/localdomain.list
+# DOMAIN: 6
+# DOMAIN-SUFFIX: 0
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 0
+# PROCESS-NAME: 0
+# USER-AGENT: 0
+# TOTAL: 6
+
+DOMAIN,nas-dast.localdomain
+DOMAIN,nas2-dast.localdomain
+DOMAIN,tuic.localdomain
+DOMAIN,agh.localdomain
+DOMAIN,pve.localdomain
+DOMAIN,unifi.localdomain
