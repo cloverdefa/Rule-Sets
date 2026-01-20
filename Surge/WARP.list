@@ -11,7 +11,6 @@
 # TOTAL: 15
 
 DOMAIN,ansible.dast.tw
-DOMAIN,blog.dast.tw
 DOMAIN,nas.dast.tw
 DOMAIN,nts.dast.tw
 DOMAIN,pve.dast.tw
