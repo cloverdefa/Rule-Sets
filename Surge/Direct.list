@@ -1,24 +1,24 @@
 # NAME: Direct
 # AUTHOR: DAST
-# Updated: 2025-10-24
+# Updated: 2026-01-16
 # REPO: https://github.com/cloverdefa/Rule-Sets/Direct.list
 # DOMAIN: 8
 # DOMAIN-KEYWORD: 0
-# DOMAIN-SUFFIX: 2
+# DOMAIN-SUFFIX: 3
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 10
+# TOTAL: 11
 
 DOMAIN,h1.dast.tw
 DOMAIN,h2.dast.tw
 DOMAIN,h3.dast.tw
-DOMAIN,dns.dast.tw
 DOMAIN,github.com
 DOMAIN,www.jkforum.net
 DOMAIN,cn.pornhub.com
 DOMAIN,e-hentai.org
 DOMAIN,exhentai.org
+DOMAIN-SUFFIX,dns.dast.tw
 DOMAIN-SUFFIX,ctbcbank.com
 DOMAIN-SUFFIX,gandi.net
 
