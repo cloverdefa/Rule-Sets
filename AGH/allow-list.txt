@@ -1,8 +1,7 @@
 ! Title: DAST URL Allowlist (AdGuard Home)
-! Updated: 2025-07-05T:10:15:35
+! Updated: 2026-01-16
 
 ! DAST Sites
-@@||ansible.dast.tw^
 @@||dns.dast.tw^
 @@||nts.dast.tw^
 @@||unifi-home.dast.tw^
