@@ -1,5 +1,5 @@
 ! Title: DAST URL Allowlist (AdGuard Home)
-! Updated: 2026-01-16
+! Updated: 2026-03-09
 
 ! DAST Sites
 @@||dns.dast.tw^
@@ -18,9 +18,10 @@
 @@||h3.dast.tw^
 
 ! Microsoft Sites
+@@||self.events.data.microsoft.com^
 @@||login.microsoftonline.com^
-@@||*.login.microsoftonline.com^
 @@||login.live.com^
+@@||*.login.microsoftonline.com^
 @@||*.msauth.net^
 @@||*.aadcdn.msftauth.net^
 @@||*.aadcdn.msauthimages.net^
