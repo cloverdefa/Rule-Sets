@@ -1,5 +1,5 @@
 ! Title: DAST URL Allowlist (AdGuard Home)
-! Updated: 2026-03-09
+! Updated: 2026-03-10
 
 ! DAST Sites
 @@||dns.dast.tw^
@@ -7,7 +7,6 @@
 @@||unifi-home.dast.tw^
 @@||unifi-office.dast.tw^
 @@||nas.dast.tw^
-@@||blog.dast.tw^
 @@||pve.dast.tw^
 @@||uptime.dast.tw^
 @@||shadow.dast.tw^
@@ -19,6 +18,8 @@
 
 ! Microsoft Sites
 @@||self.events.data.microsoft.com^
+@@||mobile.events.data.microsoft.com^
+@@||watson.events.data.microsoft.com^
 @@||login.microsoftonline.com^
 @@||login.live.com^
 @@||*.login.microsoftonline.com^
