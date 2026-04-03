@@ -1,18 +1,15 @@
 # NAME: Localdomain
 # AUTHOR: DAST
-# Updated: 2025-11-13
+# Updated: 2026-04-03
 # REPO: https://github.com/cloverdefa/Rule-Sets/localdomain.list
-# DOMAIN: 6
-# DOMAIN-SUFFIX: 0
+# DOMAIN: 0
+# DOMAIN-SUFFIX: 3
 # DOMAIN-KEYWORD: 0
 # IP-CIDR: 0
 # PROCESS-NAME: 0
 # USER-AGENT: 0
-# TOTAL: 6
+# TOTAL: 3
 
-DOMAIN,nas-dast.localdomain
-DOMAIN,nas2-dast.localdomain
-DOMAIN,tuic.localdomain
-DOMAIN,agh.localdomain
-DOMAIN,pve.localdomain
-DOMAIN,unifi.localdomain
+DOMAIN-SUFFIX,home.arpa
+DOMAIN-SUFFIX,localdomain
+DOMAIN-SUFFIX,local
