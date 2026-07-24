@@ -11,5 +11,4 @@ URL-REGEX,^https:\/\/legy\.line-apps\.com\/tl\/discover\/api\/v\d+\/recommendTab
 URL-REGEX,^https:\/\/legy\.line-apps\.com\/tl\/discover\/api\/v\d+\/collage\/searchEntry$,REJECT
 URL-REGEX,^https:\/\/legy\.line-apps\.com\/tl\/api\/v\d+\/feed$,REJECT
 URL-REGEX,^https:\/\/legy\.line-apps\.com\/tl\/api\/v\d+\/timeline\/.*$,REJECT
-# URL-REGEX,^http:\/\/wpad\/wpad.dat$,REJECT
 
