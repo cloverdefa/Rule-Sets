@@ -1,0 +1,14 @@
+# NAME: Surge Reject-Drop List
+# AUTHOR: DAST
+# Updated: 2025-07-25
+# REPO: https://github.com/cloverdefa/Rule-Sets/Surge/Reject-Drop.list
+# DOMAIN-SUFFIX: 0
+# URL-REGEX: 5
+
+# Line Voom
+URL-REGEX,^https:\/\/legy\.line-apps\.com\/ext\/videohub\/.*$
+URL-REGEX,^https:\/\/legy\.line-apps\.com\/tl\/discover\/api\/v\d+\/recommendTab\/feeds$
+URL-REGEX,^https:\/\/legy\.line-apps\.com\/tl\/discover\/api\/v\d+\/collage\/searchEntry$
+URL-REGEX,^https:\/\/legy\.line-apps\.com\/tl\/api\/v\d+\/feed$
+URL-REGEX,^https:\/\/legy\.line-apps\.com\/tl\/api\/v\d+\/timeline\/.*$
+
