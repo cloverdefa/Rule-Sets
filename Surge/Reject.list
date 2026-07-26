@@ -6,4 +6,4 @@
 # DOMAIN: 0
 # URL-REGEX: 1
 
-^http:\/\/wpad\/wpad.dat$
+URL-REGEX,^http:\/\/wpad\/wpad.dat$
