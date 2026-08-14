@@ -1,4 +1,5 @@
 ! Title: DAST URL Blocklist (AdGuard Home)
+! Updated: 2026-08-15
 
 ! 針對台灣的簡訊詐騙
 ||awetd.club^
