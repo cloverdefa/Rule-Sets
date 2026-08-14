@@ -1,12 +1,14 @@
-# NAME: Direct
+# NAME: Surge Direct List
 # AUTHOR: DAST
-# Updated: 2026-01-16
-# REPO: https://github.com/cloverdefa/Rule-Sets/Direct.list
+# Updated: 2026-08-15
+# REPO: https://github.com/cloverdefa/Rule-Sets/Surge/Direct.list
 # DOMAIN: 9
 # DOMAIN-KEYWORD: 0
 # DOMAIN-SUFFIX: 2
 # IP-CIDR: 0
+# IP-CIDR6: 0
 # PROCESS-NAME: 0
+# URL-REGEX: 0
 # USER-AGENT: 0
 # TOTAL: 11
 

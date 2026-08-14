@@ -1,12 +1,14 @@
-# NAME: Localdomain
+# NAME: Surge Localdomain List
 # AUTHOR: DAST
-# Updated: 2026-04-03
-# REPO: https://github.com/cloverdefa/Rule-Sets/localdomain.list
+# Updated: 2026-08-15
+# REPO: https://github.com/cloverdefa/Rule-Sets/Surge/localdomain.list
 # DOMAIN: 0
-# DOMAIN-SUFFIX: 3
 # DOMAIN-KEYWORD: 0
+# DOMAIN-SUFFIX: 3
 # IP-CIDR: 0
+# IP-CIDR6: 0
 # PROCESS-NAME: 0
+# URL-REGEX: 0
 # USER-AGENT: 0
 # TOTAL: 3
 

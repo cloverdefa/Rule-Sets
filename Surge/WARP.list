@@ -1,12 +1,14 @@
-# NAME: Cloudflare WARP
+# NAME: Surge Cloudflare WARP List
 # AUTHOR: DAST
-# Updated: 2026-07-25
-# REPO: https://github.com/cloverdefa/Rule-Sets/WARP.list
+# Updated: 2026-08-15
+# REPO: https://github.com/cloverdefa/Rule-Sets/Surge/WARP.list
 # DOMAIN: 10
-# DOMAIN-SUFFIX: 4
 # DOMAIN-KEYWORD: 0
+# DOMAIN-SUFFIX: 4
 # IP-CIDR: 0
+# IP-CIDR6: 0
 # PROCESS-NAME: 0
+# URL-REGEX: 0
 # USER-AGENT: 0
 # TOTAL: 13
 

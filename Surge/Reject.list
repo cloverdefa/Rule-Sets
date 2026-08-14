@@ -1,9 +1,15 @@
 # NAME: Surge Reject List
 # AUTHOR: DAST
-# Updated: 2025-07-26
-# REPO: https://github.com/cloverdefa/Rule-Sets/Surge/Block# NAME: Surge Block List          .list
-# DOMAIN-SUFFIX: 0
+# Updated: 2026-08-15
+# REPO: https://github.com/cloverdefa/Rule-Sets/Surge/Reject.list
 # DOMAIN: 0
+# DOMAIN-KEYWORD: 0
+# DOMAIN-SUFFIX: 0
+# IP-CIDR: 0
+# IP-CIDR6: 0
+# PROCESS-NAME: 0
 # URL-REGEX: 1
+# USER-AGENT: 0
+# TOTAL: 1
 
 URL-REGEX,^http:\/\/wpad\/wpad.dat$
