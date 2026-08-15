@@ -1,4 +1,4 @@
-name: Telegram Notification Push
+name: Telegram Notification
 
 on:
   push:
@@ -6,20 +6,27 @@ on:
       - main
 
 jobs:
-
-  bulid:
-    name: Build
+  notify:
+    name: Send Telegram Notification
     runs-on: ubuntu-latest
+
     steps:
-      - name: send message on push
-        uses: appleboy/telegram-action@master
+      - name: Send Telegram notification
+        uses: appleboy/telegram-action@v1.0.1
         with:
           to: ${{ secrets.GROUPS_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ${{ github.actor }} 提交內容: 
-            提交內容: ${{ github.event.commits[0].message }}
+            🚀 ${{ github.actor }} 推送了新的 Commit
 
-            存儲庫: ${{ github.repository }}
+            📦 儲存庫
+            ${{ github.repository }}
 
-            查看變更內容: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            🌿 分支
+            ${{ github.ref_name }}
+
+            📝 Commit
+            ${{ github.event.head_commit.message }}
+
+            🔗 查看變更
+            https://github.com/${{ github.repository }}/commit/${{ github.sha }}
