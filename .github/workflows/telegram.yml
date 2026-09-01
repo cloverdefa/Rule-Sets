@@ -37,10 +37,15 @@ jobs:
           prev_tag=$(git tag --sort=-creatordate | grep -A1 "^${tag}$" | tail -n1)
 
           if [ -n "$prev_tag" ] && [ "$prev_tag" != "$tag" ]; then
-            log=$(git log "${prev_tag}..${tag}" --pretty=format:'- %s (%h)')
+            commits=$(git log "${prev_tag}..${tag}" --pretty=format:'%H')
           else
-            log=$(git log "${tag}" --pretty=format:'- %s (%h)' -n 10)
+            commits=$(git log "${tag}" --pretty=format:'%H' -n 10)
           fi
+
+          log=""
+          while IFS= read -r hash; do
+            [ -n "$hash" ] && log="${log}https://github.com/${GITHUB_REPOSITORY}/commit/${hash}"$'\n'
+          done <<< "$commits"
 
           {
             echo "changes<<EOF"
