@@ -34,13 +34,17 @@ jobs:
         id: changes
         run: |
           tag="${{ steps.release.outputs.tag }}"
-          prev_tag=$(git tag --sort=-creatordate | grep -A1 "^${tag}$" | tail -n1)
 
-          if [ -n "$prev_tag" ] && [ "$prev_tag" != "$tag" ]; then
-            commits=$(git log "${prev_tag}..${tag}" --pretty=format:'%H')
+          # 沿著 commit 歷史往回找上一個 tag,不依賴 tag 建立時間
+          prev_tag=$(git describe --tags --abbrev=0 "${tag}^" 2>/dev/null || echo "")
+
+          if [ -n "$prev_tag" ]; then
+            range="${prev_tag}..${tag}"
           else
-            commits=$(git log "${tag}" --pretty=format:'%H' -n 10)
+            range="${tag}"
           fi
+
+          commits=$(git log "$range" --pretty=format:'%H')
 
           log=""
           while IFS= read -r hash; do
@@ -49,7 +53,7 @@ jobs:
 
           {
             echo "changes<<EOF"
-            echo "$log"
+            printf '%s' "$log"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
