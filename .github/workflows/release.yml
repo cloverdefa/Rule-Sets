@@ -1,11 +1,28 @@
 name: Release
 
 on:
+  # ==============================================================
+  # 自動 Release
+  #
+  # 僅監聽 main 分支上的 PR closed。
+  # Job 內再限制必須是 test → main 且成功 merge。
+  # ==============================================================
+
   pull_request:
     types:
       - closed
     branches:
       - main
+
+  # ==============================================================
+  # 手動 Release
+  #
+  # 可自行指定：
+  #
+  #   patch
+  #   minor
+  #   major
+  # ==============================================================
 
   workflow_dispatch:
     inputs:
@@ -19,16 +36,38 @@ on:
           - major
         default: patch
 
+
+# ================================================================
+# Workflow permissions
+# ================================================================
+
 permissions:
   contents: write
 
+
 jobs:
   release:
+
     # ==============================================================
-    # 限制條件：
-    # 1. 手動觸發 (workflow_dispatch) 時一律允許。
-    # 2. 自動觸發時：必須是 PR 已合併至 main，且來源分支 (head.ref) 必須為 'test'。
+    # Job 執行條件
+    #
+    # 1. workflow_dispatch
+    #       → 一律允許
+    #
+    # 2. pull_request
+    #       → PR 必須：
+    #
+    #          merged == true
+    #          base  == main
+    #          head  == test
+    #
+    # 因此只有：
+    #
+    #       test → main
+    #
+    # 成功 merge 後才會自動 Release。
     # ==============================================================
+
     if: >
       github.event_name == 'workflow_dispatch' ||
       (
@@ -39,20 +78,40 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-      # ==============================================================
-      # Checkout main
-      # ==============================================================
 
-      - name: Checkout main
+    steps:
+
+      # ============================================================
+      # Checkout
+      #
+      # workflow_dispatch：
+      #   使用 main
+      #
+      # pull_request：
+      #   使用實際 PR merge commit
+      #
+      # 不直接使用：
+      #
+      #   ref: main
+      #
+      # 避免 workflow 執行期間 main 又往前移動。
+      # ============================================================
+
+      - name: Checkout
         uses: actions/checkout@v7
         with:
-          ref: main
+          ref: >-
+            ${{
+              github.event_name == 'pull_request'
+              && github.event.pull_request.merge_commit_sha
+              || 'main'
+            }}
           fetch-depth: 0
 
-      # ==============================================================
+
+      # ============================================================
       # Get next version
-      # ==============================================================
+      # ============================================================
 
       - name: Get next version
         id: version
@@ -60,155 +119,382 @@ jobs:
         run: |
           set -euo pipefail
 
-          git fetch --tags --force
+
+          # ==========================================================
+          # Functions
+          # ==========================================================
+
 
           # ----------------------------------------------------------
           # Find latest semantic version tag
+          #
+          # 僅接受：
+          #
+          #   v1.0.0
+          #   v1.2.3
+          #   v10.20.30
+          #
+          # 不接受：
+          #
+          #   v1.0.0-test
+          #   v1.0.0-rc1
           # ----------------------------------------------------------
 
-          latest_tag="$(
+          get_latest_tag() {
             git tag --list 'v*.*.*' |
-            grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' |
-            sort -V |
-            tail -n 1 || true
-          )"
+              grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' |
+              sort -V |
+              tail -n 1 ||
+              true
+          }
 
-          echo "Latest tag: ${latest_tag:-none}"
 
           # ----------------------------------------------------------
-          # Determine release type
+          # Analyze one Commit
+          #
+          # 一個 Commit = 一個分析單位
+          #
+          # 分別取得：
+          #
+          #   Subject
+          #   Body
+          #
+          # 回傳：
+          #
+          #   major
+          #   minor
+          #   patch
+          #   none
           # ----------------------------------------------------------
 
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          get_commit_bump() {
+            local sha="$1"
 
-            release_type="${{ inputs.release_type }}"
+            local subject
+            local body
 
-            echo "Trigger: workflow_dispatch"
-            echo "Release type: $release_type"
-
-          else
-
-            release_type="none"
-
-            echo "Trigger: pull_request"
-            echo "Analyzing commits since latest release..."
 
             # --------------------------------------------------------
-            # Find commits since latest release
+            # Subject / Body 分開取得
             # --------------------------------------------------------
 
-            if [ -z "$latest_tag" ]; then
-              commit_range="HEAD"
-            else
-              commit_range="${latest_tag}..HEAD"
+            subject="$(git show -s --format='%s' "$sha")"
+            body="$(git show -s --format='%b' "$sha")"
+
+
+            echo ""
+            echo "----------------------------------------"
+            echo "Commit : $sha"
+            echo "Subject: $subject"
+
+
+            # ========================================================
+            # MAJOR
+            #
+            # 自訂：
+            #
+            #   MAJOR CHANGE:
+            #
+            # 這個標記最高優先。
+            # ========================================================
+
+            if printf '%s\n' "$subject" |
+              grep -Eq '^MAJOR CHANGE:'; then
+
+              echo "Detected: MAJOR"
+              echo "major"
+
+              return
             fi
 
-            while IFS= read -r commit; do
 
-              echo "Commit:"
-              echo "$commit"
+            if printf '%s\n' "$body" |
+              grep -Eq '^MAJOR CHANGE:'; then
 
-              # MAJOR
-              if printf '%s\n' "$commit" |
-                grep -Eq '^[a-zA-Z0-9_-]+(\([^)]*\))?!:' ||
-                printf '%s\n' "$commit" |
-                grep -Eq 'BREAKING CHANGE:'; then
+              echo "Detected: MAJOR"
+              echo "major"
 
-                release_type="major"
-                continue
-              fi
+              return
+            fi
 
-              # MINOR
-              if printf '%s\n' "$commit" |
-                grep -Eq '^feat(\([^)]*\))?:'; then
 
-                if [ "$release_type" != "major" ]; then
-                  release_type="minor"
-                fi
+            # ========================================================
+            # MINOR
+            #
+            # 1. Conventional Commit !
+            #
+            #      feat!: something
+            #      fix!: something
+            #      refactor!: something
+            #
+            #      feat(scope)!: something
+            #
+            # 2. BREAKING CHANGE:
+            #
+            #      BREAKING CHANGE: something
+            #
+            # 3. feat:
+            #
+            #      feat: something
+            #      feat(scope): something
+            #
+            # 注意：
+            #
+            # 目前這個 workflow 的規則是：
+            #
+            #   !: / BREAKING CHANGE:
+            #       → MINOR
+            #
+            # 而不是 MAJOR。
+            #
+            # MAJOR 必須使用：
+            #
+            #   MAJOR CHANGE:
+            # ========================================================
 
-                continue
-              fi
+            if printf '%s\n' "$subject" |
+              grep -Eq '^[a-zA-Z0-9_-]+(\([^)]*\))?!:'; then
 
-              # PATCH
-              if printf '%s\n' "$commit" |
-                grep -Eq '^fix(\([^)]*\))?:'; then
+              echo "Detected: MINOR"
+              echo "minor"
 
-                if [ "$release_type" = "none" ]; then
-                  release_type="patch"
-                fi
+              return
+            fi
 
-                continue
+
+            # --------------------------------------------------------
+            # BREAKING CHANGE:
+            #
+            # 保留 Body 偵測。
+            #
+            # 必須是 Body 中一行以：
+            #
+            #   BREAKING CHANGE:
+            #
+            # 開頭。
+            # --------------------------------------------------------
+
+            if printf '%s\n' "$body" |
+              grep -Eq '^BREAKING CHANGE:'; then
+
+              echo "Detected: MINOR"
+              echo "minor"
+
+              return
+            fi
+
+
+            # --------------------------------------------------------
+            # feat:
+            #
+            # 僅接受：
+            #
+            #   feat:
+            #   feat(scope):
+            #
+            # 不會誤判：
+            #
+            #   feature:
+            # --------------------------------------------------------
+
+            if printf '%s\n' "$subject" |
+              grep -Eq '^feat(\([^)]*\))?:'; then
+
+              echo "Detected: MINOR"
+              echo "minor"
+
+              return
+            fi
+
+
+            # ========================================================
+            # PATCH
+            #
+            # 僅 fix 類型觸發 patch。
+            #
+            # 例如：
+            #
+            #   fix: something
+            #   fix(scope): something
+            #
+            # chore/docs/refactor/style/test/ci/build/perf
+            # 都不會觸發 Release。
+            # ========================================================
+
+            if printf '%s\n' "$subject" |
+              grep -Eq '^fix(\([^)]*\))?:'; then
+
+              echo "Detected: PATCH"
+              echo "patch"
+
+              return
+            fi
+
+
+            # ========================================================
+            # NO RELEASE
+            # ========================================================
+
+            echo "Detected: NONE"
+            echo "none"
+          }
+
+
+          # ----------------------------------------------------------
+          # Analyze all commits in release range
+          #
+          # 優先序：
+          #
+          #   major > minor > patch > none
+          # ----------------------------------------------------------
+
+          get_release_bump() {
+            local commit_range="$1"
+
+            local release_type="none"
+            local commit_bump
+            local sha
+
+
+            # --------------------------------------------------------
+            # 一行一個 SHA。
+            #
+            # 不再把完整 git log 當成一個文字區塊解析。
+            # --------------------------------------------------------
+
+            while IFS= read -r sha; do
+
+              [[ -z "$sha" ]] && continue
+
+
+              commit_bump="$(
+                get_commit_bump "$sha" |
+                tail -n 1
+              )"
+
+
+              # ------------------------------------------------------
+              # Apply priority
+              #
+              # major > minor > patch > none
+              # ------------------------------------------------------
+
+              case "$commit_bump" in
+
+                major)
+                  release_type="major"
+                  ;;
+
+                minor)
+                  if [[ "$release_type" != "major" ]]; then
+                    release_type="minor"
+                  fi
+                  ;;
+
+                patch)
+                  if [[ "$release_type" == "none" ]]; then
+                    release_type="patch"
+                  fi
+                  ;;
+
+                none)
+                  ;;
+
+                *)
+                  echo "::error::Unknown bump type: $commit_bump"
+                  exit 1
+                  ;;
+
+              esac
+
+
+              # ------------------------------------------------------
+              # major 已經是最高等級
+              # ------------------------------------------------------
+
+              if [[ "$release_type" == "major" ]]; then
+                echo "Highest release level reached: MAJOR"
+                break
               fi
 
             done < <(
-              git log "$commit_range" \
-                --pretty=format:'%s%n%b%n---'
+              git rev-list "$commit_range"
             )
 
+
+            echo ""
             echo "Detected release type: $release_type"
 
-            # --------------------------------------------------------
-            # No release required
-            # --------------------------------------------------------
+            echo "$release_type"
+          }
 
-            if [ "$release_type" = "none" ]; then
-
-              echo "No release required."
-
-              echo "should_release=false" >> "$GITHUB_OUTPUT"
-
-              exit 0
-
-            fi
-
-          fi
-
-          # ----------------------------------------------------------
-          # Validate release type
-          # ----------------------------------------------------------
-
-          case "$release_type" in
-            patch|minor|major)
-              ;;
-            *)
-              echo "::error::Invalid release type: $release_type"
-              exit 1
-              ;;
-          esac
 
           # ----------------------------------------------------------
           # Calculate next version
           # ----------------------------------------------------------
 
-          if [ -z "$latest_tag" ]; then
+          calculate_next_version() {
+            local latest_tag="$1"
+            local release_type="$2"
 
-            case "$release_type" in
-              patch)
-                major=0
-                minor=1
-                patch=1
-                ;;
 
-              minor)
-                major=0
-                minor=2
-                patch=0
-                ;;
+            # --------------------------------------------------------
+            # First release
+            #
+            # 維持目前 workflow 的原始行為：
+            #
+            #   patch → v0.1.1
+            #   minor → v0.2.0
+            #   major → v1.0.0
+            # --------------------------------------------------------
 
-              major)
-                major=1
-                minor=0
-                patch=0
-                ;;
-            esac
+            if [[ -z "$latest_tag" ]]; then
 
-          else
+              case "$release_type" in
 
-            version="${latest_tag#v}"
+                patch)
+                  echo "v0.1.1"
+                  ;;
+
+                minor)
+                  echo "v0.2.0"
+                  ;;
+
+                major)
+                  echo "v1.0.0"
+                  ;;
+
+                *)
+                  echo "::error::Invalid release type: $release_type"
+                  exit 1
+                  ;;
+
+              esac
+
+              return
+            fi
+
+
+            # --------------------------------------------------------
+            # Parse latest version
+            # --------------------------------------------------------
+
+            local version="${latest_tag#v}"
+
+            local major
+            local minor
+            local patch
+
 
             IFS='.' read -r major minor patch <<< "$version"
 
+
+            # --------------------------------------------------------
+            # Apply version bump
+            # --------------------------------------------------------
+
             case "$release_type" in
+
               patch)
                 patch=$((patch + 1))
                 ;;
@@ -223,40 +509,293 @@ jobs:
                 minor=0
                 patch=0
                 ;;
+
+              *)
+                echo "::error::Invalid release type: $release_type"
+                exit 1
+                ;;
+
             esac
 
+
+            echo "v${major}.${minor}.${patch}"
+          }
+
+
+          # ==========================================================
+          # Fetch tags
+          # ==========================================================
+
+          echo "========================================"
+          echo "Fetching tags"
+          echo "========================================"
+
+          git fetch --tags --force
+
+
+          # ==========================================================
+          # Determine target commit
+          #
+          # workflow_dispatch：
+          #   main HEAD
+          #
+          # pull_request：
+          #   PR merge commit
+          # ==========================================================
+
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+
+            TARGET_SHA="${{ github.event.pull_request.merge_commit_sha }}"
+
+          else
+
+            TARGET_SHA="$(git rev-parse main)"
+
           fi
 
-          version="${major}.${minor}.${patch}"
-          tag="v${version}"
 
-          # ----------------------------------------------------------
-          # Prevent duplicate tag
-          # ----------------------------------------------------------
+          echo "Target commit: $TARGET_SHA"
 
-          if git rev-parse "$tag" >/dev/null 2>&1; then
-            echo "::error::Tag $tag already exists."
+
+          # ==========================================================
+          # Ensure target commit exists
+          # ==========================================================
+
+          git fetch origin "$TARGET_SHA"
+
+
+          # ==========================================================
+          # Find latest release tag
+          # ==========================================================
+
+          LATEST_TAG="$(get_latest_tag)"
+
+
+          if [[ -n "$LATEST_TAG" ]]; then
+
+            echo "Latest tag: $LATEST_TAG"
+
+          else
+
+            echo "Latest tag: none"
+
+          fi
+
+
+          # ==========================================================
+          # Determine commit range
+          #
+          # Existing release:
+          #
+          #   latest_tag..target_sha
+          #
+          # First release:
+          #
+          #   target_sha
+          # ==========================================================
+
+          if [[ -n "$LATEST_TAG" ]]; then
+
+            COMMIT_RANGE="${LATEST_TAG}..${TARGET_SHA}"
+
+          else
+
+            COMMIT_RANGE="$TARGET_SHA"
+
+          fi
+
+
+          echo "Commit range: $COMMIT_RANGE"
+
+
+          # ==========================================================
+          # Determine release type
+          #
+          # workflow_dispatch：
+          #   完全使用使用者指定的 release_type
+          #
+          # pull_request：
+          #   分析 Commit
+          # ==========================================================
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+
+            RELEASE_TYPE="${{ inputs.release_type }}"
+
+            echo "Trigger: workflow_dispatch"
+            echo "Release type: $RELEASE_TYPE"
+
+          else
+
+            RELEASE_TYPE="$(
+              get_release_bump "$COMMIT_RANGE" |
+              tail -n 1
+            )"
+
+            echo "Trigger: pull_request"
+            echo "Detected release type: $RELEASE_TYPE"
+
+
+            # --------------------------------------------------------
+            # 如果所有 Commit 都是：
+            #
+            #   docs
+            #   chore
+            #   refactor
+            #   style
+            #   test
+            #   ci
+            #   build
+            #   perf
+            #
+            # 則不建立 Release。
+            # --------------------------------------------------------
+
+            if [[ "$RELEASE_TYPE" == "none" ]]; then
+
+              echo ""
+              echo "========================================"
+              echo "No release required."
+              echo "========================================"
+
+              echo "should_release=false" >> "$GITHUB_OUTPUT"
+
+              exit 0
+
+            fi
+
+          fi
+
+
+          # ==========================================================
+          # Validate release type
+          # ==========================================================
+
+          case "$RELEASE_TYPE" in
+
+            patch|minor|major)
+              ;;
+
+            *)
+              echo "::error::Invalid release type: $RELEASE_TYPE"
+              exit 1
+              ;;
+
+          esac
+
+
+          # ==========================================================
+          # Calculate next version
+          # ==========================================================
+
+          NEXT_VERSION="$(
+            calculate_next_version \
+              "$LATEST_TAG" \
+              "$RELEASE_TYPE"
+          )"
+
+
+          # ==========================================================
+          # Extract version / tag
+          # ==========================================================
+
+          VERSION="${NEXT_VERSION#v}"
+          TAG="$NEXT_VERSION"
+
+
+          # ==========================================================
+          # Validate generated tag
+          # ==========================================================
+
+          if ! printf '%s\n' "$TAG" |
+            grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+
+            echo "::error::Invalid generated tag: $TAG"
             exit 1
+
           fi
 
-          echo "Release type: $release_type"
-          echo "Next version: $version"
-          echo "Next tag: $tag"
 
-          echo "should_release=true" >> "$GITHUB_OUTPUT"
-          echo "release_type=$release_type" >> "$GITHUB_OUTPUT"
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          # ==========================================================
+          # Prevent duplicate local tag
+          # ==========================================================
 
-      # ==============================================================
+          if git tag --list "$TAG" |
+            grep -Fxq "$TAG"; then
+
+            echo "::error::Tag $TAG already exists locally."
+            exit 1
+
+          fi
+
+
+          # ==========================================================
+          # Prevent duplicate remote tag
+          # ==========================================================
+
+          if git ls-remote \
+            --tags \
+            origin \
+            "refs/tags/$TAG" |
+            grep -q "refs/tags/$TAG"; then
+
+            echo "::error::Tag $TAG already exists on origin."
+            exit 1
+
+          fi
+
+
+          # ==========================================================
+          # Show release information
+          # ==========================================================
+
+          echo ""
+          echo "========================================"
+          echo "Release information"
+          echo "========================================"
+          echo "Latest tag : ${LATEST_TAG:-none}"
+          echo "Release    : $RELEASE_TYPE"
+          echo "Version    : $VERSION"
+          echo "Tag        : $TAG"
+          echo "Commit     : $TARGET_SHA"
+          echo "========================================"
+
+
+          # ==========================================================
+          # GitHub Actions outputs
+          # ==========================================================
+
+          {
+            echo "should_release=true"
+            echo "release_type=$RELEASE_TYPE"
+            echo "version=$VERSION"
+            echo "tag=$TAG"
+            echo "target_sha=$TARGET_SHA"
+          } >> "$GITHUB_OUTPUT"
+
+
+      # ============================================================
       # Create Release
-      # ==============================================================
+      # ============================================================
 
       - name: Create Release
         if: steps.version.outputs.should_release == 'true'
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.version.outputs.tag }}
-          target_commitish: main
+
+          # --------------------------------------------------------
+          # 使用實際分析的 commit，而不是 mutable main。
+          #
+          # workflow_dispatch：
+          #   main HEAD
+          #
+          # pull_request：
+          #   PR merge commit
+          # --------------------------------------------------------
+
+          target_commitish: ${{ steps.version.outputs.target_sha }}
+
           name: ${{ steps.version.outputs.tag }}
           generate_release_notes: true
+
