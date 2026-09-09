@@ -5,7 +5,12 @@ on:
   # 自動 Release
   #
   # 僅監聽 main 分支上的 PR closed。
-  # Job 內再限制必須是 test → main 且成功 merge。
+  #
+  # Job 內再限制：
+  #
+  #   test → main
+  #
+  # 且 PR 必須成功 merge。
   # ==============================================================
 
   pull_request:
@@ -13,6 +18,7 @@ on:
       - closed
     branches:
       - main
+
 
   # ==============================================================
   # 手動 Release
@@ -44,10 +50,13 @@ on:
 permissions:
   contents: write
 
+
 jobs:
+
   # ==================================================================
   # Job 1: 判斷下一個版本
   # ==================================================================
+
   version:
     name: Determine Version
 
@@ -58,17 +67,17 @@ jobs:
     #       → 一律允許
     #
     # 2. pull_request
-    #       → PR 必須：
+    #       → 必須：
     #
     #          merged == true
     #          base  == main
     #          head  == test
     #
-    # 因此只有：
+    # 因此自動 Release 僅允許：
     #
     #       test → main
     #
-    # 成功 merge 後才會自動 Release。
+    # 成功 merge 後執行。
     # ==============================================================
 
     if: >
@@ -88,16 +97,19 @@ jobs:
       tag: ${{ steps.version.outputs.tag }}
       target_sha: ${{ steps.version.outputs.target_sha }}
 
+
     steps:
 
       # ============================================================
       # Checkout
       #
       # workflow_dispatch：
-      #   使用 main
+      #
+      #   main
       #
       # pull_request：
-      #   使用實際 PR merge commit
+      #
+      #   實際 PR merge commit
       #
       # 不直接使用：
       #
@@ -161,12 +173,9 @@ jobs:
           # ----------------------------------------------------------
           # Analyze one Commit
           #
-          # 一個 Commit = 一個分析單位
+          # 一個 Commit = 一個分析單位。
           #
-          # 分別取得：
-          #
-          #   Subject
-          #   Body
+          # Subject / Body 分開分析。
           #
           # 回傳：
           #
@@ -184,7 +193,7 @@ jobs:
 
 
             # --------------------------------------------------------
-            # Subject / Body 分開取得
+            # Subject / Body
             # --------------------------------------------------------
 
             subject="$(git show -s --format='%s' "$sha")"
@@ -200,12 +209,44 @@ jobs:
             # ========================================================
             # MAJOR
             #
-            # 自訂：
+            # 最高優先級。
             #
-            #   MAJOR CHANGE:
+            # --------------------------------------------------------
+            # 1. 自訂 MAJOR CHANGE:
             #
-            # 這個標記最高優先。
+            #    MAJOR CHANGE: remove old API
+            #
+            # --------------------------------------------------------
+            # 2. Conventional Commit breaking:
+            #
+            #    feat!: remove old API
+            #    fix!: change behavior
+            #    refactor!: redesign API
+            #
+            #    feat(api)!: redesign API
+            #
+            # --------------------------------------------------------
+            # 3. Traditional Chinese:
+            #
+            #    新增!: 移除舊 API
+            #    功能!: 修改核心功能
+            #    修正!: 修改行為
+            #    修復!: 修改行為
+            #
+            #    新增(core)!: xxx
+            #    功能(core)!: xxx
+            #
+            # --------------------------------------------------------
+            # 4. BREAKING CHANGE:
+            #
+            #    BREAKING CHANGE: old API removed
+            #
             # ========================================================
+
+
+            # --------------------------------------------------------
+            # Custom MAJOR CHANGE in Subject
+            # --------------------------------------------------------
 
             if printf '%s\n' "$subject" |
               grep -Eq '^MAJOR CHANGE:'; then
@@ -217,8 +258,69 @@ jobs:
             fi
 
 
+            # --------------------------------------------------------
+            # Custom MAJOR CHANGE in Body
+            # --------------------------------------------------------
+
             if printf '%s\n' "$body" |
               grep -Eq '^MAJOR CHANGE:'; then
+
+              echo "Detected: MAJOR"
+              echo "major"
+
+              return
+            fi
+
+
+            # --------------------------------------------------------
+            # Conventional Commit breaking change
+            #
+            # <type>!:
+            # <type>(scope)!:
+            # --------------------------------------------------------
+
+            if printf '%s\n' "$subject" |
+              grep -Eq '^[a-zA-Z0-9_-]+(\([^)]*\))?!:'; then
+
+              echo "Detected: MAJOR"
+              echo "major"
+
+              return
+            fi
+
+
+            # --------------------------------------------------------
+            # Traditional Chinese breaking change
+            #
+            # 新增!:
+            # 功能!:
+            # 修正!:
+            # 修復!:
+            #
+            # 同時支援：
+            #
+            #   :
+            #   ：
+            # --------------------------------------------------------
+
+            if printf '%s\n' "$subject" |
+              grep -Eq '^(新增|功能|修正|修復)(\([^)]*\))?![:：]'; then
+
+              echo "Detected: MAJOR"
+              echo "major"
+
+              return
+            fi
+
+
+            # --------------------------------------------------------
+            # BREAKING CHANGE in Body
+            #
+            # 必須位於 Body 行首。
+            # --------------------------------------------------------
+
+            if printf '%s\n' "$body" |
+              grep -Eq '^BREAKING CHANGE:'; then
 
               echo "Detected: MAJOR"
               echo "major"
@@ -230,84 +332,29 @@ jobs:
             # ========================================================
             # MINOR
             #
-            # 1. Conventional Commit !
-            #
-            #      feat!: something
-            #      fix!: something
-            #      refactor!: something
-            #
-            #      feat(scope)!: something
-            #
-            # 2. BREAKING CHANGE:
-            #
-            #      BREAKING CHANGE: something
-            #
-            # 3. feat:
-            #
-            #      feat: something
-            #      feat(scope): something
-            #
-            # 注意：
-            #
-            # 目前這個 workflow 的規則是：
-            #
-            #   !: / BREAKING CHANGE:
-            #       → MINOR
-            #
-            # 而不是 MAJOR。
-            #
-            # MAJOR 必須使用：
-            #
-            #   MAJOR CHANGE:
-            # ========================================================
-
-            if printf '%s\n' "$subject" |
-              grep -Eq '^[a-zA-Z0-9_-]+(\([^)]*\))?!:'; then
-
-              echo "Detected: MINOR"
-              echo "minor"
-
-              return
-            fi
-
-
-            # --------------------------------------------------------
-            # BREAKING CHANGE:
-            #
-            # 保留 Body 偵測。
-            #
-            # 必須是 Body 中一行以：
-            #
-            #   BREAKING CHANGE:
-            #
-            # 開頭。
-            # --------------------------------------------------------
-
-            if printf '%s\n' "$body" |
-              grep -Eq '^BREAKING CHANGE:'; then
-
-              echo "Detected: MINOR"
-              echo "minor"
-
-              return
-            fi
-
-
-            # --------------------------------------------------------
-            # feat:
-            #
-            # 僅接受：
+            # English:
             #
             #   feat:
             #   feat(scope):
             #
-            # 不會誤判：
+            # Traditional Chinese:
             #
-            #   feature:
-            # --------------------------------------------------------
+            #   新增:
+            #   新增：
+            #   新增(scope):
+            #   新增(scope)：
+            #
+            #   功能:
+            #   功能：
+            #   功能(scope):
+            #   功能(scope)：
+            # ========================================================
 
             if printf '%s\n' "$subject" |
-              grep -Eq '^feat(\([^)]*\))?:'; then
+              grep -Eq '^feat(\([^)]*\))?:' ||
+              printf '%s\n' "$subject" |
+              grep -Eq '^(新增|功能)(\([^)]*\))?[:：]'
+            then
 
               echo "Detected: MINOR"
               echo "minor"
@@ -319,19 +366,36 @@ jobs:
             # ========================================================
             # PATCH
             #
-            # 僅 fix 類型觸發 patch。
+            # English:
             #
-            # 例如：
+            #   fix:
+            #   fix(scope):
             #
-            #   fix: something
-            #   fix(scope): something
+            #   chore:
+            #   chore(scope):
             #
-            # chore/docs/refactor/style/test/ci/build/perf
-            # 都不會觸發 Release。
+            # Traditional Chinese:
+            #
+            #   修正:
+            #   修正：
+            #   修正(scope):
+            #   修正(scope)：
+            #
+            #   修復:
+            #   修復：
+            #   修復(scope):
+            #   修復(scope)：
+            #
+            # 注意：
+            #
+            # chore 現在會觸發 PATCH Release。
             # ========================================================
 
             if printf '%s\n' "$subject" |
-              grep -Eq '^fix(\([^)]*\))?:'; then
+              grep -Eq '^(fix|chore)(\([^)]*\))?:' ||
+              printf '%s\n' "$subject" |
+              grep -Eq '^(修正|修復)(\([^)]*\))?[:：]'
+            then
 
               echo "Detected: PATCH"
               echo "patch"
@@ -342,6 +406,20 @@ jobs:
 
             # ========================================================
             # NO RELEASE
+            #
+            # 未符合上述條件的 Commit 都視為 none。
+            #
+            # 例如：
+            #
+            #   docs:
+            #   refactor:
+            #   style:
+            #   test:
+            #   ci:
+            #   build:
+            #   perf:
+            #
+            # 都不會觸發 Release。
             # ========================================================
 
             echo "Detected: NONE"
@@ -355,6 +433,12 @@ jobs:
           # 優先序：
           #
           #   major > minor > patch > none
+          #
+          # 使用 git rev-list：
+          #
+          #   一行 = 一個 Commit SHA
+          #
+          # 避免把多個 Commit 串成大型文字後解析。
           # ----------------------------------------------------------
 
           get_release_bump() {
@@ -364,12 +448,6 @@ jobs:
             local commit_bump
             local sha
 
-
-            # --------------------------------------------------------
-            # 一行一個 SHA。
-            #
-            # 不再把完整 git log 當成一個文字區塊解析。
-            # --------------------------------------------------------
 
             while IFS= read -r sha; do
 
@@ -383,7 +461,7 @@ jobs:
 
 
               # ------------------------------------------------------
-              # Apply priority
+              # Apply release priority
               #
               # major > minor > patch > none
               # ------------------------------------------------------
@@ -418,7 +496,7 @@ jobs:
 
 
               # ------------------------------------------------------
-              # major 已經是最高等級
+              # MAJOR 已經是最高等級，可以停止分析。
               # ------------------------------------------------------
 
               if [[ "$release_type" == "major" ]]; then
@@ -447,15 +525,15 @@ jobs:
             local release_type="$2"
 
 
-            # --------------------------------------------------------
+            # ========================================================
             # First release
             #
-            # 維持目前 workflow 的原始行為：
+            # 保留這個 REPO 原本的版本策略：
             #
             #   patch → v0.1.1
             #   minor → v0.2.0
             #   major → v1.0.0
-            # --------------------------------------------------------
+            # ========================================================
 
             if [[ -z "$latest_tag" ]]; then
 
@@ -484,9 +562,9 @@ jobs:
             fi
 
 
-            # --------------------------------------------------------
+            # ========================================================
             # Parse latest version
-            # --------------------------------------------------------
+            # ========================================================
 
             local version="${latest_tag#v}"
 
@@ -498,9 +576,9 @@ jobs:
             IFS='.' read -r major minor patch <<< "$version"
 
 
-            # --------------------------------------------------------
+            # ========================================================
             # Apply version bump
-            # --------------------------------------------------------
+            # ========================================================
 
             case "$release_type" in
 
@@ -546,9 +624,11 @@ jobs:
           # Determine target commit
           #
           # workflow_dispatch：
+          #
           #   main HEAD
           #
           # pull_request：
+          #
           #   PR merge commit
           # ==========================================================
 
@@ -582,11 +662,11 @@ jobs:
 
           if [[ -n "$LATEST_TAG" ]]; then
 
-            echo "Latest tag: $LATEST_TAG"
+            echo "Latest release tag: $LATEST_TAG"
 
           else
 
-            echo "Latest tag: none"
+            echo "Latest release tag: none"
 
           fi
 
@@ -594,11 +674,11 @@ jobs:
           # ==========================================================
           # Determine commit range
           #
-          # Existing release:
+          # Existing release：
           #
           #   latest_tag..target_sha
           #
-          # First release:
+          # First release：
           #
           #   target_sha
           # ==========================================================
@@ -621,10 +701,12 @@ jobs:
           # Determine release type
           #
           # workflow_dispatch：
-          #   完全使用使用者指定的 release_type
+          #
+          #   完全使用手動指定的版本類型。
           #
           # pull_request：
-          #   分析 Commit
+          #
+          #   根據 Commit 自動判斷。
           # ==========================================================
 
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
@@ -646,18 +728,7 @@ jobs:
 
 
             # --------------------------------------------------------
-            # 如果所有 Commit 都是：
-            #
-            #   docs
-            #   chore
-            #   refactor
-            #   style
-            #   test
-            #   ci
-            #   build
-            #   perf
-            #
-            # 則不建立 Release。
+            # No release required
             # --------------------------------------------------------
 
             if [[ "$RELEASE_TYPE" == "none" ]]; then
@@ -782,9 +853,11 @@ jobs:
             echo "target_sha=$TARGET_SHA"
           } >> "$GITHUB_OUTPUT"
 
+
   # ==================================================================
   # Job 2: 建立 GitHub Release
   # ==================================================================
+
   release:
     name: Create Release
 
@@ -794,6 +867,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
+
     steps:
 
       # ============================================================
@@ -802,20 +876,46 @@ jobs:
 
       - name: Create Release
         uses: softprops/action-gh-release@v3
+
         with:
+          # --------------------------------------------------------
+          # Release tag
+          # --------------------------------------------------------
+
           tag_name: ${{ needs.version.outputs.tag }}
 
+
           # --------------------------------------------------------
-          # 使用實際分析的 commit，而不是 mutable main。
+          # Release 綁定實際分析的 commit。
+          #
+          # PR：
+          #
+          #   PR merge commit
           #
           # workflow_dispatch：
+          #
           #   main HEAD
           #
-          # pull_request：
-          #   PR merge commit
+          # 不直接使用：
+          #
+          #   target_commitish: main
+          #
+          # 避免 main 在 workflow 執行期間移動。
           # --------------------------------------------------------
 
           target_commitish: ${{ needs.version.outputs.target_sha }}
 
+
+          # --------------------------------------------------------
+          # Release name
+          # --------------------------------------------------------
+
           name: ${{ needs.version.outputs.tag }}
+
+
+          # --------------------------------------------------------
+          # 自動產生 Release Notes
+          # --------------------------------------------------------
+
           generate_release_notes: true
+
