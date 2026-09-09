@@ -44,9 +44,12 @@ on:
 permissions:
   contents: write
 
-
 jobs:
-  release:
+  # ==================================================================
+  # Job 1: 判斷下一個版本
+  # ==================================================================
+  version:
+    name: Determine Version
 
     # ==============================================================
     # Job 執行條件
@@ -78,6 +81,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    outputs:
+      should_release: ${{ steps.version.outputs.should_release }}
+      release_type: ${{ steps.version.outputs.release_type }}
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+      target_sha: ${{ steps.version.outputs.target_sha }}
 
     steps:
 
@@ -773,16 +782,28 @@ jobs:
             echo "target_sha=$TARGET_SHA"
           } >> "$GITHUB_OUTPUT"
 
+  # ==================================================================
+  # Job 2: 建立 GitHub Release
+  # ==================================================================
+  release:
+    name: Create Release
+
+    needs: version
+
+    if: needs.version.outputs.should_release == 'true'
+
+    runs-on: ubuntu-latest
+
+    steps:
 
       # ============================================================
       # Create Release
       # ============================================================
 
       - name: Create Release
-        if: steps.version.outputs.should_release == 'true'
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: ${{ steps.version.outputs.tag }}
+          tag_name: ${{ needs.version.outputs.tag }}
 
           # --------------------------------------------------------
           # 使用實際分析的 commit，而不是 mutable main。
@@ -794,8 +815,7 @@ jobs:
           #   PR merge commit
           # --------------------------------------------------------
 
-          target_commitish: ${{ steps.version.outputs.target_sha }}
+          target_commitish: ${{ needs.version.outputs.target_sha }}
 
-          name: ${{ steps.version.outputs.tag }}
+          name: ${{ needs.version.outputs.tag }}
           generate_release_notes: true
-
