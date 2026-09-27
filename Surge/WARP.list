@@ -1,8 +1,8 @@
 # NAME: Surge Cloudflare WARP List
 # AUTHOR: DAST
-# Updated: 2026-08-15
+# Updated: 2026-09-27
 # REPO: https://github.com/cloverdefa/Rule-Sets/Surge/WARP.list
-# DOMAIN: 10
+# DOMAIN: 11
 # DOMAIN-KEYWORD: 0
 # DOMAIN-SUFFIX: 4
 # IP-CIDR: 0
@@ -10,8 +10,9 @@
 # PROCESS-NAME: 0
 # URL-REGEX: 0
 # USER-AGENT: 0
-# TOTAL: 13
+# TOTAL: 15
 
+DOMAIN,mtproxy.dast.tw
 DOMAIN,nas.dast.tw
 DOMAIN,nts.dast.tw
 DOMAIN,pve.dast.tw
