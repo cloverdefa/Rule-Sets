@@ -61,3 +61,6 @@
 ! 中油詐騙
 ||ziggo.nl^
 ||home.nl^
+
+!ETC詐騙
+||cymhvdkk.online^
