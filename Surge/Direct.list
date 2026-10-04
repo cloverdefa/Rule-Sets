@@ -1,6 +1,6 @@
 # NAME: Surge Direct List
 # AUTHOR: DAST
-# Updated: 2026-08-15
+# Updated: 2026-10-04
 # REPO: https://github.com/cloverdefa/Rule-Sets/Surge/Direct.list
 # DOMAIN: 9
 # DOMAIN-KEYWORD: 0
@@ -12,10 +12,10 @@
 # USER-AGENT: 0
 # TOTAL: 11
 
-DOMAIN,dns.dast.tw
 DOMAIN,h1.dast.tw
 DOMAIN,h2.dast.tw
 DOMAIN,h3.dast.tw
+DOMAIN,hs.dast.tw
 DOMAIN,github.com
 DOMAIN,www.jkforum.net
 DOMAIN,cn.pornhub.com
